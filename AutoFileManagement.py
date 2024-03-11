@@ -108,7 +108,7 @@ class MoverHandler(FileSystemEventHandler):
     # ? .upper is for not missing out on files with uppercase extensions
     def on_modified(self, event):
         dir = source_dir
-        if preferred_dir is not None:
+        if preferred_dir != '':
             dir = preferred_dir
         with os.scandir(dir) as entries:
             for entry in entries:
@@ -122,7 +122,7 @@ if __name__ == "__main__":
                         datefmt='%Y-%m-%d %H:%M:%S')
     
     path = source_dir
-    if preferred_dir is not None:
+    if preferred_dir != '':
         path = preferred_dir
     
     print(f"Organizing Directory: {path}")
