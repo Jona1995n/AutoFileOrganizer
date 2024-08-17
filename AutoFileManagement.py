@@ -71,37 +71,37 @@ def check_files(entry, name):  # * Checks all Audio Files
                     dest = dest_dir_music
                 if dest.lower() != preferred_dir.lower(): 
                     move_file(dest, entry, name)
-                    logging.info(f"Moved audio file: {name}")
+                    logging.info(f"Moved audio file: {name} to {dest}")
         
         for video_extension in video_extensions:
             if name.endswith(video_extension) or name.endswith(video_extension.upper()):
                 if dest_dir_video.lower() != preferred_dir.lower():
                     move_file(dest_dir_video, entry, name)
-                    logging.info(f"Moved video file: {name}")
+                    logging.info(f"Moved video file: {name} to {dest}")
         
         for image_extension in image_extensions:
             if name.endswith(image_extension) or name.endswith(image_extension.upper()):
                 if dest_dir_image.lower() != preferred_dir.lower():
                     move_file(dest_dir_image, entry, name)
-                    logging.info(f"Moved image file: {name}")
+                    logging.info(f"Moved image file: {name} to {dest}")
 
         for documents_extension in document_extensions:
             if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
                 if dest_dir_documents.lower() != preferred_dir.lower(): 
                     move_file(dest_dir_documents, entry, name)
-                    logging.info(f"Moved document file: {name}")
+                    logging.info(f"Moved document file: {name} to {dest}")
         
         for documents_extension in script_extensions:
             if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
                 if dest_dir_documents.lower() != preferred_dir.lower(): 
                     move_file(dest_dir_scripts, entry, name)
-                    logging.info(f"Moved script file: {name}")
+                    logging.info(f"Moved script file: {name} to {dest}")
         
         for documents_extension in csv_extensions:
             if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
                 if dest_dir_documents.lower() != preferred_dir.lower(): 
                     move_file(dest_dir_csv, entry, name)
-                    logging.info(f"Moved CSV file: {name}")
+                    logging.info(f"Moved CSV file: {name} to {dest}")
 
 class MoverHandler(FileSystemEventHandler):
     # ? THIS FUNCTION WILL RUN WHENEVER THERE IS A CHANGE IN "source_dir"
