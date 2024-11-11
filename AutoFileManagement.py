@@ -22,20 +22,25 @@ dest_dir_csv = f"/Users/{currentUser}/Desktop/CSVs"
 
 # ? supported image types
 image_extensions = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw", ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"]
+
 # ? supported Video types
 video_extensions = [".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg",
                     ".mp4", ".mp4v", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"]
+
 # ? supported Audio types
 audio_extensions = [".m4a", ".flac", "mp3", ".wav", ".wma", ".aac"]
+
 # ? supported Document types
 document_extensions = [".doc", ".docx", ".odt",
                        ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"]
+
 script_extensions = [".py"]
 csv_extensions = [".csv"]
 
 def make_unique(dest, name):
     filename, extension = splitext(name)
     counter = 1
+
     # * IF FILE EXISTS, ADDS NUMBER TO THE END OF THE FILENAME
     while exists(f"{dest}/{name}"):
         name = f"{filename}({str(counter)}){extension}"
@@ -76,30 +81,28 @@ def check_files(entry, name):  # * Checks all Audio Files
         for video_extension in video_extensions:
             if name.endswith(video_extension) or name.endswith(video_extension.upper()):
                 if dest_dir_video.lower() != preferred_dir.lower():
+                    dest = dest_dir_video
                     move_file(dest_dir_video, entry, name)
                     logging.info(f"Moved video file: {name} to {dest}")
         
         for image_extension in image_extensions:
             if name.endswith(image_extension) or name.endswith(image_extension.upper()):
                 if dest_dir_image.lower() != preferred_dir.lower():
+                    dest = dest_dir_image
                     move_file(dest_dir_image, entry, name)
                     logging.info(f"Moved image file: {name} to {dest}")
 
         for documents_extension in document_extensions:
             if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
                 if dest_dir_documents.lower() != preferred_dir.lower(): 
+                    dest = dest_dir_documents
                     move_file(dest_dir_documents, entry, name)
                     logging.info(f"Moved document file: {name} to {dest}")
         
-        for documents_extension in script_extensions:
-            if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
-                if dest_dir_documents.lower() != preferred_dir.lower(): 
-                    move_file(dest_dir_scripts, entry, name)
-                    logging.info(f"Moved script file: {name} to {dest}")
-        
         for documents_extension in csv_extensions:
             if name.endswith(documents_extension) or name.endswith(documents_extension.upper()):
-                if dest_dir_documents.lower() != preferred_dir.lower(): 
+                if dest_dir_csv.lower() != preferred_dir.lower(): 
+                    dest = dest_dir_csv
                     move_file(dest_dir_csv, entry, name)
                     logging.info(f"Moved CSV file: {name} to {dest}")
 
